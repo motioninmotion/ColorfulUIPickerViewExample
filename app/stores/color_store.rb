@@ -5,7 +5,6 @@ class ColorStore
     Color.new(:black, "Black"),
     Color.new(:darkGray, "Dark Gray"),
     Color.new(:lightGray, "Light Gray"),
-    Color.new(:white, "White"),
     Color.new(:gray, "Gray"),
     Color.new(:red, "Red"),
     Color.new(:green, "Green"),
