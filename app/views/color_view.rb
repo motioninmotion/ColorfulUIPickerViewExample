@@ -3,6 +3,7 @@ class ColorView < UIView
     super
     addSubview(@label = UILabel.new)
     @label.textAlignment = NSTextAlignmentCenter
+    @label.frame = [[0, 0], [160, 25]]
     self
   end
 

@@ -2,7 +2,9 @@ class PickerController < UIViewController
   def loadView
     self.view = PickerView.new
 
-    [view.color_viewer_one, view.color_viewer_two].each do |cv|
+    view.picker.delegate = view.picker.dataSource = picker_delegate
+
+    color_viewers.each do |cv|
       color = colors.sample
       cv.color = color.color
       cv.text = color.label
@@ -13,5 +15,14 @@ class PickerController < UIViewController
 
   def colors
     ColorStore.all
+  end
+
+  def color_viewers
+    [view.color_viewer_one, view.color_viewer_two]
+  end
+
+  def picker_delegate
+    Dispatch.once { @picker_delegate = PickerDelegate.new(colors, *color_viewers)}
+    @picker_delegate
   end
 end
