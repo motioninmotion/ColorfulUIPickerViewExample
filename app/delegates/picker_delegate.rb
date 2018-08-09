@@ -4,11 +4,11 @@ class PickerDelegate
     @colors = colors
   end
 
-  def numberOfComponentsInPickerView(picker_view)
+  def numberOfComponentsInPickerView(_)
     @color_viewers.count
   end
 
-  def pickerView(picker_view, numberOfRowsInComponent: component)
+  def pickerView(_, numberOfRowsInComponent: _)
     @colors.count
   end
 
@@ -16,14 +16,14 @@ class PickerDelegate
   #   @colors[row].label
   # end
 
-  def pickerView(picker_view, viewForRow: row, forComponent: component, reusingView: old_view)
+  def pickerView(_, viewForRow: row, forComponent: _, reusingView: old_view)
     (old_view || ColorView.new).tap do |cv|
       cv.color = @colors[row].color
       cv.text = @colors[row].label
     end
   end
 
-  def pickerView(picker_view, didSelectRow: row, inComponent: component)
+  def pickerView(_, didSelectRow: row, inComponent: component)
     @color_viewers[component].color = @colors[row].color
     @color_viewers[component].text = @colors[row].label
   end

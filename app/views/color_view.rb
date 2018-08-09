@@ -14,7 +14,7 @@ class ColorView < UIView
 
   def color=(color)
     setBackgroundColor UIColor.send("#{color}Color")
-    p = Pointer.new(:float)
+    p = Pointer.new(:double)
     white = backgroundColor.getWhite(p, alpha: nil)
     @label.textColor = UIColor.colorWithWhite(white, alpha: 1)
   end
